@@ -76,7 +76,7 @@ python -m venv .venv
 
 ## 4.3 Install Dependencies
 
-This repository provides a complete dependency lock file, 'requirement.txt', encoded in UTF-16 with BOM. It is recommended to try:
+This repository provides a complete dependency lock file, `requirement.txt`, encoded in UTF-16 with BOM. It is recommended to try:
 
 ```bash
 pip install -r requirement.txt
@@ -90,16 +90,16 @@ pip install numpy openai-whisper sounddevice rich torch TTS face_recognition ope
             python-dotenv docx2txt
 ```
 
-> 'face_recognition' depends on 'dlib'. Some systems may require C/C++ build tools and CMake to be installed in advance.
+> `face_recognition` depends on `dlib`. Some systems may require C/C++ build tools and CMake to be installed in advance.
 
 ---
 
 ## 5. Configuration
 
-## 5.1 Face Recognition Configuration in 'localchat.py'
+## 5.1 Face Recognition Configuration in `localchat.py`
 
-- Default face image: 'imgs/biden.jpg'
-- Default recognized name: 'Reze'
+- Default face image: `imgs/biden.jpg`
+- Default recognized name: `Reze`
 
 You may modify these values as needed:
 
@@ -108,7 +108,7 @@ biden_image = face_recognition.load_image_file("imgs/biden.jpg")
 known_face_names = ["Reze"]
 ```
 
-## 5.2 Voice-Cloning Reference Audio in 'localchat.py'
+## 5.2 Voice-Cloning Reference Audio in `localchat.py`
 
 The default audio file is:
 
@@ -118,9 +118,9 @@ The default audio file is:
 
 This audio is used for:
 - Playing a prompt audio after face recognition succeeds.
-- Serving as the 'speaker_wav' reference for XTTS voice cloning.
+- Serving as the `speaker_wav` reference for XTTS voice cloning.
 
-## 5.3 RAG and Model Configuration in 'src/query.py'
+## 5.3 RAG and Model Configuration in `src/query.py`
 
 - Vector database directory: `src/chroma`
 - Embedding：`OllamaEmbeddings(model="nomic-embed-text")`
@@ -128,14 +128,14 @@ This audio is used for:
 - Custom API Base URL：`https://api.guidaodeng.com/v1`
 
 Please make sure that:
-1. Ollama is available on the local machine and 'nomic-embed-text' has been pulled.
-2. Your OpenAI-compatible API key environment variable has been configured, usually as 'OPENAI_API_KEY'.
+1. Ollama is available on the local machine and `nomic-embed-text` has been pulled.
+2. Your OpenAI-compatible API key environment variable has been configured, usually as `OPENAI_API_KEY`.
 
 ---
 
 ## 6. Knowledge Base Construction
 
-This step is optional but recommended. After updating documents under 'src/document/', it is recommended to rebuild the vector database:
+This step is optional but recommended. After updating documents under `src/document/`, it is recommended to rebuild the vector database:
 
 ```bash
 cd src
@@ -144,8 +144,8 @@ python database.py
 ```
 
 Notes:
-- '--reset' deletes 'src/chroma' and rebuilds it.
-- '.pdf', '.docx', and '.txt' documents are supported.
+- `--reset` deletes `src/chroma` and rebuilds it.
+- `.pdf`, `.docx`, and `.txt` documents are supported.
 
 ---
 
@@ -163,7 +163,7 @@ Interaction steps:
 3. Press Enter again to stop recording.
 4. Wait for transcription, retrieval, and voice playback.
 
-Press 'Ctrl + C' to exit.
+Press `Ctrl + C` to exit.
 
 ---
 
@@ -172,7 +172,7 @@ Press 'Ctrl + C' to exit.
 ### 8.1 The Camera Cannot Open or the Face Cannot Be Recognized
 
 - Make sure camera permission has been granted.
-- Make sure 'imgs/biden.jpg' contains a clear frontal face.
+- Make sure `imgs/biden.jpg` contains a clear frontal face.
 - You may replace the target face image with a clearer high-resolution frontal image.
 
 ### 8.2 No Microphone Input
@@ -183,12 +183,12 @@ Press 'Ctrl + C' to exit.
 ### 8.3 TTS Is Slow or GPU Memory Is Insufficient
 
 - The program automatically uses CUDA if available; otherwise, it falls back to CPU.
-- 'xtts_v2' is significantly slower on CPU, which is expected.
+- `xtts_v2` is significantly slower on CPU, which is expected.
 
 ### 8.4 RAG Call Fails
 
 Check the following items:
 - Whether the Ollama service has been started.
-- Whether the 'nomic-embed-text' model has been pulled.
-- Whether the API key and 'base_url' are available.
-- Whether 'src/chroma' has been successfully built.
+- Whether the `nomic-embed-text` model has been pulled.
+- Whether the API key and `base_url` are available.
+- Whether `src/chroma` has been successfully built.
