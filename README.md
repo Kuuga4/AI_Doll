@@ -4,7 +4,7 @@ A local voice-interaction prototype that starts a session through a **face-recog
 
 ---
 
-## 1. Project Capabilities Overview览
+## 1. Project Capabilities Overview
 
 - Recognizes a specified user through the camera, using `imgs/biden.jpg` as the default reference image.
 - Starts and stops audio recording through Enter key control.
